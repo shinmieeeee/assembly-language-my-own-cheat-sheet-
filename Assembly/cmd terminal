@@ -1,0 +1,11 @@
+type:
+
+wsl
+
+how to name a file: nano filename.asm
+how to name a folder: mkdir foldername
+                      cd foldername //initialize the folder // use?
+
+nasm -f elf64 filename.asm -o filename.o
+ld filename.o -o filename
+./filename
