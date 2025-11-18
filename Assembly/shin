@@ -1,0 +1,43 @@
+32 bit eax to edx, 4 ang print int 80h
+64 bit rax, rdi, rsi, rdx, 1 ang print syscall
+
+dd int
+db str
+dw word
+dq int
+
+db 65 A
+db 10 newline
+db 48 0
+db 0 str terminator
+
+//entry point 
+section .text
+  global _start
+
+_start:
+
+//block starting symbol
+section .bss   // variables
+
+//can initialize constants
+section .data // data that does not change
+
+///SAMPLE PRINT///
+section .data
+    msg db "Hello, world!", 10
+    len equ $ - msg
+
+section .text
+    global _start
+
+_start:
+    mov eax, 4          ; syscall: write
+    mov ebx, 1          ; stdout
+    mov ecx, msg        ; pointer to string
+    mov edx, len        ; length
+    int 80h
+    
+    mov eax, 1
+    xor ebx, ebx
+    int 80h
